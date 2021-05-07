@@ -81,5 +81,5 @@ while True:
         time.sleep(1)
     except Exception as e:
         print(e)
-        post_message(myToken,"#rbhrec", e)
+        post_message(myToken,"#rbhrec", "LSK Error" + e)
         time.sleep(1)
