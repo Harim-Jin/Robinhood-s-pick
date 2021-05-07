@@ -55,31 +55,31 @@ def get_current_price(ticker):
 upbit = pyupbit.Upbit(access, secret)
 print("autotrade start")
 # 시작 메세지 슬랙 전송
-post_message(myToken,"#rbhrec", " 자동매매 시작!")
+post_message(myToken,"#rbhrec", "OMG 자동매매 시작!")
 
 
 while True:
     try:
         now = datetime.datetime.now()
-        start_time = get_start_time("KRW-")
+        start_time = get_start_time("KRW-OMG")
         end_time = start_time + datetime.timedelta(days=1)
 
         if start_time < now < end_time - datetime.timedelta(seconds=10):
-            target_price = get_target_price("KRW-", 0.4)
-            ma15 = get_ma15("KRW-")
-            current_price = get_current_price("KRW-")
+            target_price = get_target_price("KRW-OMG", 0.4)
+            ma15 = get_ma15("KRW-OMG")
+            current_price = get_current_price("KRW-OMG")
             if target_price < current_price and ma15 < current_price:
                 krw = get_balance("KRW")
                 if krw > 5000:
-                    buy_result = upbit.buy_market_order("KRW-", krw*0.9995)
-                    post_message(myToken,"#rbhrec", " buy : " +str(buy_result))
+                    buy_result = upbit.buy_market_order("KRW-OMG", krw*0.9995)
+                    post_message(myToken,"#rbhrec", "OMG buy : " +str(buy_result))
         else:
-            bch = get_balance("BCH")
-                if bch > 0.003:
-                sell_result = upbit.sell_market_order("KRW-BCH", bch*0.9995)
-                post_message(myToken,"#rbhrec", " sell : " +str(sell_result))
+            omg = get_balance("OMG")
+                if omg > 0.32:
+                sell_result = upbit.sell_market_order("KRW-OMG", omg*0.9995)
+                post_message(myToken,"#rbhrec", "OMG sell : " +str(sell_result))
         time.sleep(1)
     except Exception as e:
         print(e)
-        post_message(myToken,"#rbhrec", e)
+        post_message(myToken,"#rbhrec", "OMG Error" + e)
         time.sleep(1)
