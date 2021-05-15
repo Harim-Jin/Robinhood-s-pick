@@ -46,7 +46,8 @@ def get_balance(coin):
                 return float(b['balance'])
             else:
                 return 0
-
+    return 0
+            
 def get_current_price(ticker):
     """현재가 조회"""
     return pyupbit.get_orderbook(tickers=ticker)[0]["orderbook_units"][0]["ask_price"]
@@ -75,7 +76,7 @@ while True:
                     post_message(myToken,"#rbhrec", "LSK buy : " +str(buy_result))
         else:
             lsk = get_balance("LSK")
-                if lsk > 0.5:
+                if lsk > 0.58:
                 sell_result = upbit.sell_market_order("KRW-LSK", lsk*0.9995)
                 post_message(myToken,"#rbhrec", "LSK sell : " +str(sell_result))
         time.sleep(1)
