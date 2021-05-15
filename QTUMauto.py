@@ -46,7 +46,8 @@ def get_balance(coin):
                 return float(b['balance'])
             else:
                 return 0
-
+    return 0
+            
 def get_current_price(ticker):
     """현재가 조회"""
     return pyupbit.get_orderbook(tickers=ticker)[0]["orderbook_units"][0]["ask_price"]
@@ -75,7 +76,7 @@ while True:
                     post_message(myToken,"#rbhrec", "QTUM buy : " +str(buy_result))
         else:
             qtum = get_balance("QTUM")
-                if qtum > 0.13:
+                if qtum > 0.19:
                 sell_result = upbit.sell_market_order("KRW-QTUM", qtum*0.9995)
                 post_message(myToken,"#rbhrec", "QTUM sell : " +str(sell_result))
         time.sleep(1)
