@@ -75,7 +75,7 @@ while True:
                     post_message(myToken,"#rbhrec", "NEO buy : " +str(buy_result))
         else:
             neo = get_balance("NEO")
-                if neo > 0.032:
+                if neo > 0.04:
                 sell_result = upbit.sell_market_order("KRW-NEO", neo*0.9995)
                 post_message(myToken,"#rbhrec", "NEO sell : " +str(sell_result))
         time.sleep(1)
